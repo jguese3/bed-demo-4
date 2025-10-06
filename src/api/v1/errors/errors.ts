@@ -26,3 +26,19 @@ export class AppError extends Error {
         Error.captureStackTrace(this, this.constructor);
     }
 }
+
+/**
+ * Class representation of an authentication error
+ * Extends the AppError to include verification and user identity
+ * Used for invalid tokens, expired tokens, etc. 
+ *                      something is of in validation
+ */
+export class AuthenticationError extends AppError {
+    constructor(
+        message: string,
+        code: string = "AUTHENTICATION_ERROR",
+        statusCode: number = HTTP_STATUS.UNAUTHORIZED
+    ) {
+        super(message, code, statusCode);
+    }
+}
