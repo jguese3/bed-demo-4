@@ -3,6 +3,7 @@ import express, { Express } from "express";
 import morgan from "morgan";
 
 import itemRoutes from "./api/v1/routes/itemRoutes";
+import errorHandler from "./api/v1/middleware/errorHandler";
 
 // initialize the express application
 const app: Express = express();
@@ -48,5 +49,7 @@ app.get("/api/v1/health", (req, res) => {
 app.use("/api/v1/items", itemRoutes);
 
 // Route Imports END
+
+app.use(errorHandler);
 
 export default app;
