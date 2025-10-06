@@ -42,3 +42,18 @@ export class AuthenticationError extends AppError {
         super(message, code, statusCode);
     }
 }
+
+/**
+ * Class representing an authorization error
+ * Extends the AppError to include role-based access
+ * Used for insufficient permission and role violatons
+ */
+export class AuthorizarionError extends AppError {
+    constructor(
+        message: string,
+        code: string = "AUTHORIZATION_ERROR",
+        statusCode: number = HTTP_STATUS.FORBIDDEN
+    ) {
+        super(message, code, statusCode);
+    }
+}
