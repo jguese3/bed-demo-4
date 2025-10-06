@@ -6,8 +6,8 @@ interface ApiResponse<T> {
     status: string;
     data?: T;
     message?: string;
-    error?: string;
-    code?: string;
+    error?: { message: string; code: string };
+    timestamp?: string;
 }
 
 /**
@@ -33,9 +33,10 @@ export const successResponse = <T>(
  */
 export const errorResponse = (
     message: string,
-    code?: string
+    code: string
 ): ApiResponse<null> => ({
     status: "error",
-    error: message,
-    code,
+    error: { message, code },
+    timestamp: new Date().toISOString(),
 });
+ 
