@@ -2,6 +2,7 @@ import express, { Router } from "express";
 import { validateRequest } from "../middleware/validate";
 import { itemSchemas } from "../validations/itemValidation";
 import * as itemController from "../controllers/itemController";
+import authenticate from "../middleware/authenticate";
 
 const router: Router = express.Router();
 
@@ -9,6 +10,7 @@ const router: Router = express.Router();
 router.get("/", itemController.getAllItems);
 router.post(
     "/",
+    authenticate,
     validateRequest(itemSchemas.create),
     itemController.createItem
 );
