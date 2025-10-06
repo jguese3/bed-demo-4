@@ -1,0 +1,6 @@
+node_modules/
+dist/
+
+.vscode/
+
+bed-demo-11d70-firebase-adminsdk-fbsvc-2251cbb72e.json
